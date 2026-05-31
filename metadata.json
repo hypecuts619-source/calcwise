@@ -1,0 +1,13 @@
+{
+  "name": "CalcWise",
+  "description": "A high-performance, SEO-first financial and lifestyle calculator platform featuring over 65 specialized tools for loans, investments, taxes, and health.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "Financial Planning",
+    "Loan Amortization",
+    "Investment Analysis",
+    "Tax Estimation",
+    "Health Metrics",
+    "Math Tools"
+  ]
+}

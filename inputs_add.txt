@@ -1,0 +1,104 @@
+  'simple-interest': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'savings-goal': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'ideal-weight': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'discount': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'date-diff': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'inflation': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'body-fat': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'world-clock': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'fraction-decimal': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'lease': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'heloc': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'probability': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'exponent': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'logarithm': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'basal-metabolic': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'waist-hip': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'binary': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'password-strength': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'countdown': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'salary-comparison': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'bonus': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'property-tax': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'car-lease': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'student-loan': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'macros': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
+  'unit-converter': [
+    { label: 'Value 1', name: 'val1', type: 'number', defaultValue: 100 },
+    { label: 'Value 2', name: 'val2', type: 'number', defaultValue: 50 },
+  ],
