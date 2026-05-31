@@ -8,7 +8,7 @@ import * as Logic from '../lib/calculatorLogic.ts';
 import { CalculationInput } from '../types.ts';
 
 // Map calculator IDs to their specific logic functions
-const LOGIC_MAP: Record<string, (values: Record<string, any>) => any> = {
+export const LOGIC_MAP: Record<string, (values: Record<string, any>) => any> = {
   'bmr-calc-v2': Logic.LogicBatchNew100.bmr_calc_v2,
   'water-intake-calc': Logic.LogicBatchNew100.water_intake_calc,
   'body-fat-navy-calc': Logic.LogicBatchNew100.body_fat_navy_calc,
@@ -364,7 +364,7 @@ const LOGIC_MAP: Record<string, (values: Record<string, any>) => any> = {
 };
 
 // Map calculator IDs to their input configurations
-const INPUT_MAP: Record<string, CalculationInput[]> = {
+export const INPUT_MAP: Record<string, CalculationInput[]> = {
   'bmr-calc-v2': [{label: 'Weight (kg)', name: 'w', type: 'number', defaultValue: 70}, {label: 'Height (cm)', name: 'h', type: 'number', defaultValue: 175}, {label: 'Age (y)', name: 'a', type: 'number', defaultValue: 30}, {label: 'Is Male (1=Y,0=N)', name: 'm', type: 'number', defaultValue: 1}],
   'water-intake-calc': [{label: 'Weight (kg)', name: 'w', type: 'number', defaultValue: 70}, {label: 'Exercise (min)', name: 'e', type: 'number', defaultValue: 30}],
   'body-fat-navy-calc': [{label: 'Waist (cm)', name: 'w', type: 'number', defaultValue: 85}, {label: 'Neck (cm)', name: 'n', type: 'number', defaultValue: 40}, {label: 'Height (cm)', name: 'h', type: 'number', defaultValue: 175}],

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Copy, RotateCcw, Save, Trash2, SplitSquareHorizontal, Printer, Link as LinkIcon, Share2, Download, FileText, Target, X, CheckCircle2 } from 'lucide-react';
 import { cn } from '../lib/utils.ts';
 import { CalculationInput, CalculationResult } from '../types.ts';
@@ -358,13 +359,21 @@ export function CalculatorWidget({ id, title, inputs, onCalculate, children }: C
 
   return (
     <div className="w-full space-y-12 relative">
-      {showToast && (
-        <div className="fixed bottom-4 right-4 bg-primary text-white px-6 py-3 rounded-xl shadow-2xl flex items-center space-x-3 animate-in fade-in slide-in-from-bottom-4 z-50">
-          <CheckCircle2 className="h-5 w-5" />
-          <span className="font-bold text-sm tracking-wide">{toastMessage}</span>
-        </div>
-      )}
-      <div className="card-surface p-4 sm:p-6 md:p-8 w-full max-w-3xl mx-auto backdrop-blur-sm bg-white/95 leading-normal rounded-2xl shadow-sm border border-border print:shadow-none print:border-none print:bg-transparent">
+      <AnimatePresence>
+        {showToast && (
+          <motion.div 
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 15, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 350, damping: 25 }}
+            className="fixed bottom-6 right-6 bg-primary text-white px-6 py-4 rounded-xl shadow-xl flex items-center space-x-3 z-[100] border border-white/20"
+          >
+            <CheckCircle2 className="h-5 w-5" />
+            <span className="font-bold text-sm tracking-wide">{toastMessage}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <div className="card-surface p-4 sm:p-6 md:p-8 w-full max-w-3xl mx-auto backdrop-blur-sm bg-white/95 leading-normal rounded-3xl shadow-[0_2px_10px_-3px_rgba(6,81,237,0.05)] border border-border print:shadow-none print:border-none print:bg-transparent">
         <div className="flex justify-between items-center mb-8 border-b border-border pb-4 print:hidden">
           <h2 className="text-xl font-display font-bold text-heading">{title}</h2>
           <div className="flex items-center space-x-3">
@@ -529,35 +538,55 @@ export function CalculatorWidget({ id, title, inputs, onCalculate, children }: C
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 print:grid-cols-2">
-              {results.map((res, idx) => (
-                <div key={idx} className={cn("flex flex-col", res.isPrimary && !res.chartData ? "sm:col-span-2 items-center text-center" : "", res.chartData ? "sm:col-span-2" : "")}>
-                  <div className={cn("flex flex-col", res.isPrimary && !res.chartData ? "items-center" : "")}>
-                    <span className="text-xs text-body font-medium mb-1">{res.label}</span>
-                    <span className={cn(
-                      "font-display font-black tracking-tight",
-                      res.isPrimary ? "text-4xl text-primary print:text-5xl" : "text-xl text-heading"
-                    )}>
-                      {res.value}
-                    </span>
-                    {res.helpText && <p className="text-[10px] text-hint mt-1 font-semibold">{res.helpText}</p>}
-                    {res.explanation && <p className="text-sm text-body mt-3 leading-relaxed max-w-prose text-left">{res.explanation}</p>}
-                  </div>
-                  {res.chartData && (
-                    <div className="calcwise-chart-capture w-full bg-white p-4 rounded-xl mt-4">
-                      <ChartRenderer data={res.chartData} type={res.chartType} />
+              <AnimatePresence mode="popLayout">
+                {results.map((res, idx) => (
+                  <motion.div
+                    key={res.label + (res.value?.toString() || idx)}
+                    initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -15, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: idx * 0.05, ease: 'easeOut' }}
+                    layout
+                    className={cn("flex flex-col", res.isPrimary && !res.chartData ? "sm:col-span-2 items-center text-center" : "", res.chartData ? "sm:col-span-2" : "")}
+                  >
+                    <div className={cn("flex flex-col", res.isPrimary && !res.chartData ? "items-center" : "")}>
+                      <span className="text-xs text-body font-medium mb-1">{res.label}</span>
+                      <motion.span 
+                        key={res.value?.toString()} // React key change forces animation on value change
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ type: 'spring', stiffness: 200, damping: 12 }}
+                        className={cn(
+                          "font-display font-black tracking-tight",
+                          res.isPrimary ? "text-4xl text-primary print:text-5xl" : "text-xl text-heading"
+                        )}>
+                        {res.value}
+                      </motion.span>
+                      {res.helpText && <p className="text-[10px] text-hint mt-1 font-semibold">{res.helpText}</p>}
+                      {res.explanation && <p className="text-sm text-body mt-3 leading-relaxed max-w-prose text-left">{res.explanation}</p>}
                     </div>
-                  )}
-                </div>
-              ))}
+                    {res.chartData && (
+                      <div className="calcwise-chart-capture w-full bg-white p-4 rounded-xl mt-4">
+                        <ChartRenderer data={res.chartData} type={res.chartType} />
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
             
             {children && <div className="mt-8 pt-8 border-t border-primary/10">{children}</div>}
             
             <div className="flex justify-center sm:justify-start items-center mt-8 pt-6 border-t border-primary/10 print:hidden">
-                <button onClick={handleSaveScenario} className="flex items-center space-x-2 text-xs font-bold text-primary bg-primary/5 hover:bg-primary/10 px-4 py-2.5 rounded-lg transition-all outline-none group border border-primary/10 hover:border-primary/30">
-                   <Save className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                   <span>Save & compare</span>
-                </button>
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleSaveScenario} 
+                  className="flex items-center space-x-2 text-xs font-bold text-primary bg-primary/5 hover:bg-primary/10 px-5 py-3 rounded-xl transition-all outline-none group border border-primary/10 shadow-[0_0_15px_-3px_rgba(6,81,237,0.1)] hover:shadow-[0_0_20px_-3px_rgba(6,81,237,0.2)]"
+                >
+                   <Save className="h-4 w-4" />
+                   <span>Save & Compare Scenario</span>
+                </motion.button>
             </div>
           </div>
         )}

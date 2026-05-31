@@ -50,6 +50,20 @@ export function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('global-search-input');
+        if (searchInput) {
+          searchInput.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const handleSelectCalculator = (slug: string) => {
     setSearchQuery("");
     setShowResults(false);
@@ -236,18 +250,24 @@ export function Header() {
           <div className="flex items-center space-x-2 xl:space-x-4">
             <LanguageSwitcher />
 
-            <div className="relative hidden xl:block" ref={searchRef}>
-              <input
-                type="text"
-                placeholder="Search calculators..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onFocus={() => {
-                  if (searchQuery.trim().length > 0) setShowResults(true);
-                }}
-                className="pl-10 pr-4 py-2 bg-slate-100 border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20 transition-all w-64"
-              />
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+              <div className="relative hidden xl:block" ref={searchRef}>
+                <div className="relative flex items-center">
+                  <input
+                    id="global-search-input"
+                    type="text"
+                    placeholder="Search calculators..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onFocus={() => {
+                      if (searchQuery.trim().length > 0) setShowResults(true);
+                    }}
+                    className="pl-10 pr-14 py-2 bg-slate-100 border-none rounded-full text-sm font-medium focus:ring-2 focus:ring-primary/20 transition-all w-64 placeholder:text-slate-400"
+                  />
+                  <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+                  <div className="absolute right-3 flex items-center pointer-events-none">
+                    <span className="text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded shadow-sm border border-slate-200">⌘K</span>
+                  </div>
+                </div>
 
               {/* Search Results Dropdown */}
               {showResults && (
