@@ -5,14 +5,14 @@ import { CATEGORIES, CALCULATORS } from '../constants.ts';
 
 export function Sitemap() {
   useEffect(() => {
-    document.title = "Calculator Directory & Sitemap | CalcWise";
+    document.title = "Sitemap & Complete Calculator Directory | CalcWise";
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
       metaDesc.setAttribute('name', 'description');
       document.head.appendChild(metaDesc);
     }
-    metaDesc.setAttribute('content', `Full directory of ${CALCULATORS.length} online calculators organized by category.`);
+    metaDesc.setAttribute('content', `Browse our complete directory of ${CALCULATORS.length} specialized calculators on CalcWise. Discover and search through finance, health, math, and conversion tools easily.`);
   }, []);
 
   return (

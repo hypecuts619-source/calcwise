@@ -37,6 +37,7 @@ function AnimatedRoutes() {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
+      {/* @ts-ignore */}
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><Home /></motion.div>} />
         <Route path="/category/:catId" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><CategoryPage /></motion.div>} />

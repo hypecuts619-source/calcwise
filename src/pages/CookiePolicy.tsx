@@ -1,6 +1,17 @@
 import React from 'react';
 
 export function CookiePolicy() {
+  React.useEffect(() => {
+    document.title = "Cookie Policy | CalcWise - Cookie Consent & Local Storage";
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Understand how CalcWise responsibly deploys essential operational cookies and browser local storage configurations under global CCPA & GDPR guidelines.");
+  }, []);
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 space-y-12">
       <h1 className="text-4xl font-display font-extrabold text-heading">Cookie Policy</h1>

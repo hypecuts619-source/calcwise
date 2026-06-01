@@ -1,6 +1,17 @@
 import React from 'react';
 
 export function About() {
+  React.useEffect(() => {
+    document.title = "About Us & Our Core Mission | CalcWise";
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Learn about CalcWise's mission to democratize global data literacy. Read about our four core pillars: universal utility, absolute educational transparency, privacy-by-design, and zero fee paywalls.");
+  }, []);
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 space-y-12">
       <h1 className="text-4xl font-display font-extrabold text-heading">About CalcWise</h1>

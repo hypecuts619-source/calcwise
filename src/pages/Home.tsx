@@ -19,6 +19,15 @@ export function Home() {
   const searchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    document.title = "CalcWise | Free Online Calculators for Finance, Health, Math & More";
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', 'CalcWise is the ultimate free online directory of 360+ accurate, specialized calculators. Calculate mortgage, loan EMI, BMI, simple interest, date differences, and more with instant formulas and charts.');
+
     try {
       const hStr = localStorage.getItem('calcwise_history');
       if (hStr) setHistory(JSON.parse(hStr));
@@ -338,7 +347,7 @@ export function Home() {
                 <div className="h-10 w-10 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
                   <Icons.Zap className="h-5 w-5 text-primary" />
                 </div>
-                <h4 className="text-xl font-display font-bold mb-3 group-hover:text-primary transition-colors">{calc.title}</h4>
+                <h3 className="text-xl font-display font-bold mb-3 group-hover:text-primary transition-colors">{calc.title}</h3>
                 <p className="text-sm text-slate-400 leading-relaxed mb-6">{calc.description}</p>
                 <div className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-primary">
                   Try Now <Icons.ChevronRight className="h-4 w-4 ml-1" />

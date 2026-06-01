@@ -1,6 +1,17 @@
 import React from 'react';
 
 export function FAQPage() {
+  React.useEffect(() => {
+    document.title = "Frequently Asked Questions (FAQ) | CalcWise";
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Find clear answers to frequently asked questions about CalcWise's computational accuracy, privacy policies, currency calculation protocols, and free tools.");
+  }, []);
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 space-y-12">
       <h1 className="text-4xl font-display font-extrabold text-heading">Frequently Asked Questions</h1>

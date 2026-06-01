@@ -1,6 +1,17 @@
 import React from 'react';
 
 export function PrivacyPolicy() {
+  React.useEffect(() => {
+    document.title = "Privacy Policy | CalcWise - Secure & Private Calculations";
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', "Read about CalcWise's rigorous data privacy standards. We process calculations natively in your local browser sandbox to ensure your sensitive inputs never traverse the web.");
+  }, []);
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 space-y-12">
       <h1 className="text-4xl font-display font-extrabold text-heading">Privacy Policy</h1>

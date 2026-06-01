@@ -7,7 +7,7 @@ export function SEOArticleBlock({
   inputs 
 }: { 
   calculator: CalculatorMetadata, 
-  category?: Category, 
+  category?: any, 
   inputs: CalculationInput[] 
 }) {
   const inputLabels = inputs.filter(i => i.type !== 'hidden').map(i => i.label);
